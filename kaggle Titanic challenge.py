@@ -180,6 +180,8 @@ scoring_acc = voting_model.score(X_test,y_test)
 cross = cross_val_score(voting_model,X,y)
 
 
+# trying the github changes
+
 #y_pred = model.predict(test_df)
 #
 #submission = model.predict(test_df)
