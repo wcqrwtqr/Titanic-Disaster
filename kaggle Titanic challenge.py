@@ -48,7 +48,7 @@ df['FamilySize'] = df['SibSp'] + df['Parch'] + 1
 #df = df.drop('Family Size' , axis =1)
 
 #Name length
-df['Name_length'] = df['Name'].apply(len) 
+df['Name_length'] = df['Name'].apply(len)
 
 # add is alone coloumn with initial zeros
 df['IsAlone'] = 0
@@ -89,7 +89,7 @@ df['Embarked'] = df['Embarked'].map({'Q': 0, 'S': 1, 'C': 2}).astype(int)
 ## helper function to check the Nan values
 for i in range(13):
     print(df.iloc[: , i].isnull().value_counts())
-''' 
+'''
 
 df = df.drop(['Ticket', 'Cabin'] , axis = 1)
 
@@ -111,7 +111,7 @@ for col in ['Fare','Age','Name_length']:
 
 # split the data again
 train_df = df.loc[traindex , :]
-train_df['Survived'] = survived 
+train_df['Survived'] = survived
 test_df = df.loc[testdex , :]
 
 del df , col  , survived , transf
@@ -134,7 +134,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33,
 
 '''
 from keras.models import Sequential
-from keras.activations import relu , sigmoid 
+from keras.activations import relu , sigmoid
 from keras.layers import Dense , Dropout
 from keras.optimizers import Adam, RMSprop , Adagrad
 from keras.losses import binary_crossentropy
@@ -157,7 +157,7 @@ model.add(Dense(1, activation=sigmoid))
 model.summary()
 
 model.compile(Adagrad(lr=0.01) , loss= 'binary_crossentropy' , metrics=['accuracy'])
-history = model.fit(X_train , y_train , batch_size=100, epochs=200, verbose=1, 
+history = model.fit(X_train , y_train , batch_size=100, epochs=200, verbose=1,
                     validation_data=(X_test,y_test))
 '''
 from sklearn.ensemble import VotingClassifier , RandomForestClassifier
@@ -169,7 +169,7 @@ rand_forest_model = RandomForestClassifier(n_estimators=100)
 naive_model = GaussianNB()
 svc_model = SVC(kernel='rbf') # 'linear'
 
-voting_model = VotingClassifier(estimators=[('naive',naive_model), 
+voting_model = VotingClassifier(estimators=[('naive',naive_model),
                                             ('svc',svc_model),
                                             ('forest',rand_forest_model)]).fit(X_train, y_train)
 
@@ -216,22 +216,3 @@ cross = cross_val_score(voting_model,X,y)
 #test_df = test_df.drop(['Fare-cut'],axis=1)
 #
 #test_df.Fare_cut.value_counts()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
